@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>India Votes - Election Assistant</title>
+    <meta name="description" content="An interactive guide to understanding the Indian Election System.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Abstract Background Elements -->
+    <div class="bg-shape shape-saffron"></div>
+    <div class="bg-shape shape-green"></div>
+
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-check-to-slot"></i> India Votes
+        </div>
+        <ul class="nav-links">
+            <li class="active" data-target="dashboard"><i class="fa-solid fa-timeline"></i> Process Timeline</li>
+            <li data-target="flashcards"><i class="fa-solid fa-clone"></i> Flashcards</li>
+            <li data-target="quiz"><i class="fa-solid fa-clipboard-question"></i> Quiz</li>
+            <li data-target="guide"><i class="fa-solid fa-book-open-reader"></i> Voter Guide</li>
+            <li data-target="chatbot"><i class="fa-solid fa-comments"></i> Election Chat</li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header>
+            <div class="header-title">
+                <h1>Interactive Election Assistant</h1>
+                <p>Learn about the largest democratic process in the world.</p>
+            </div>
+        </header>
+
+        <!-- DASHBOARD (TIMELINE) -->
+        <section id="dashboard" class="page active">
+            <h2>The Election Timeline</h2>
+            <p class="subtitle">Step-by-step process of how elections are conducted in India.</p>
+            
+            <div class="timeline-container" id="timeline-container">
+                <!-- Timeline injected via JS -->
+            </div>
+        </section>
+
+        <!-- FLASHCARDS -->
+        <section id="flashcards" class="page">
+            <h2>Learn the Terminology</h2>
+            <p class="subtitle">Click the card to flip and learn key election terms.</p>
+            
+            <div class="flashcard-container">
+                <div class="flashcard" id="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <h3 id="fc-term">EVM</h3>
+                            <p class="click-hint"><i class="fa-solid fa-hand-pointer"></i> Click to flip</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <p id="fc-def">Electronic Voting Machine...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-controls">
+                    <button id="btn-prev-card" class="btn"><i class="fa-solid fa-chevron-left"></i> Previous</button>
+                    <span id="fc-counter">1 / 8</span>
+                    <button id="btn-next-card" class="btn">Next <i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUIZ -->
+        <section id="quiz" class="page">
+            <h2>Test Your Knowledge</h2>
+            <p class="subtitle">How well do you know the Indian election system?</p>
+            
+            <div class="quiz-container glass-panel">
+                <div id="quiz-intro">
+                    <p>Are you ready to test your knowledge about the Indian democratic process?</p>
+                    <button id="btn-start-quiz" class="btn btn-primary">Start Quiz</button>
+                </div>
+                
+                <div id="quiz-question-area" style="display: none;">
+                    <div class="quiz-header">
+                        <span id="quiz-progress">Question 1 of 5</span>
+                        <span id="quiz-score">Score: 0</span>
+                    </div>
+                    <h3 id="quiz-question">Question text here?</h3>
+                    <div class="quiz-options" id="quiz-options">
+                        <!-- Options injected via JS -->
+                    </div>
+                    <button id="btn-next-question" class="btn btn-primary" style="display: none;">Next Question</button>
+                </div>
+
+                <div id="quiz-result" style="display: none;">
+                    <h3>Quiz Completed!</h3>
+                    <div class="score-circle">
+                        <span id="final-score">4/5</span>
+                    </div>
+                    <p id="quiz-feedback">Great job!</p>
+                    <button id="btn-restart-quiz" class="btn btn-primary">Retake Quiz</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VOTER GUIDE -->
+        <section id="guide" class="page">
+            <h2>How to Vote</h2>
+            <p class="subtitle">Your step-by-step guide to exercising your franchise.</p>
+            
+            <div class="guide-grid" id="guide-grid">
+                <!-- Guide steps injected via JS -->
+            </div>
+        </section>
+
+        <!-- CHATBOT -->
+        <section id="chatbot" class="page">
+            <h2>Interactive Election Chat</h2>
+            <p class="subtitle">Ask questions to learn more about the election process details.</p>
+            
+            <div class="chat-container glass-panel">
+                <div class="chat-box" id="chat-box">
+                    <div class="chat-message bot-message">
+                        <div class="message-content">
+                            Hello! I am your Election Assistant. Select a question below to learn more about how elections work in India.
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-area" id="chat-options">
+                    <!-- Options injected via JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
