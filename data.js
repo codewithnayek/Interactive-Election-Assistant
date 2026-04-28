@@ -142,29 +142,91 @@ const electionData = {
     chatQuestions: [
         {
             id: "q1",
-            question: "How are the election dates decided?",
-            answer: "The Election Commission of India (ECI) decides the election schedule based on factors like weather, academic calendars, festivals, and the availability of central police forces. They announce it during a press conference, bringing the Model Code of Conduct into immediate effect."
+            question: "I turned 18 this year. How can I vote?",
+            answer: "Congratulations! First, you must register to vote by filling out Form 6. You can do this online at voters.eci.gov.in or via the Voter Helpline App. Once registered, you will get an EPIC (Voter ID) card."
         },
         {
             id: "q2",
-            question: "What happens if a candidate gets less than 1/6th of total votes?",
-            answer: "If a candidate fails to secure at least one-sixth (16.67%) of the total valid votes polled in the constituency, they lose their security deposit. This is commonly known as 'Zamaanat Zabt' (forfeiture of deposit)."
+            question: "What documents do I need for voter registration?",
+            answer: "To register via Form 6, you need: 1. A passport-size photograph. 2. Proof of age (Birth certificate, PAN card, Aadhaar, etc.). 3. Proof of residence (Aadhaar, Passport, Utility bill, etc.)."
         },
         {
             id: "q3",
-            question: "How long does campaigning last?",
-            answer: "Campaigning officially ends 48 hours before the conclusion of the polling in a given constituency. This period is called 'Election Silence', designed to give voters a peaceful time to decide."
+            question: "Can I vote without a voter ID card?",
+            answer: "Yes! If your name is on the electoral roll, you can vote using alternate approved IDs like your Aadhaar Card, PAN Card, Passport, Driving License, or MNREGA job card."
         },
         {
             id: "q4",
-            question: "Can I vote from anywhere in India?",
-            answer: "Usually, you must vote at the specific polling booth assigned to your registered residential address. However, for certain categories like service personnel (military) and election duty staff, postal ballots or Electronically Transmitted Postal Ballot System (ETPBS) are available."
+            question: "How do I check my name in the voter list?",
+            answer: "You can check your name on the electoral roll by visiting electorsearch.eci.gov.in. You can search by your EPIC number, your personal details, or your mobile number."
         },
         {
             id: "q5",
-            question: "What happens during counting day?",
-            answer: "Under heavy security, EVMs are brought to counting centers. The Returning Officer begins counting first with Postal Ballots, followed by EVM votes. VVPAT slips from 5 randomly selected polling stations per assembly segment are also counted and matched with EVM results to ensure transparency."
+            question: "What should I do if someone asks for money for votes?",
+            answer: "Selling or buying votes is a criminal offense. You should immediately report it using the ECI's cVIGIL app. It allows citizens to anonymously report Model Code of Conduct violations."
+        },
+        {
+            id: "q6",
+            question: "How can I verify election news?",
+            answer: "Always check the official ECI website or their verified social media handles for official announcements. Do not forward unverified WhatsApp messages. Use recognized fact-checking websites to verify suspicious news."
         }
+    ],
+    voterHelpGuides: [
+        {
+            id: "first-time",
+            title: "I am voting for the first time",
+            icon: "fa-baby-carriage",
+            steps: [
+                "Check if you are 18+ as of the qualifying date.",
+                "Register online via Form 6 on the Voter Portal.",
+                "Check your name on the electoral roll once approved.",
+                "Find your designated polling booth online.",
+                "Carry your Voter ID (or alternate valid ID) to the booth.",
+                "Press the EVM button next to your candidate and check the VVPAT slip."
+            ]
+        },
+        {
+            id: "register-help",
+            title: "I need to register as a voter",
+            icon: "fa-address-card",
+            steps: [
+                "Gather Proof of Age, Proof of Address, and a photo.",
+                "Go to voters.eci.gov.in or download the Voter Helpline App.",
+                "Select 'New Voter Registration' (Form 6).",
+                "Fill in the details and upload documents.",
+                "Submit and track your application status using the Reference ID."
+            ]
+        },
+        {
+            id: "lost-id",
+            title: "I lost my voter ID",
+            icon: "fa-id-card-clip",
+            steps: [
+                "File an FIR or police report for the lost card.",
+                "Fill Form 8 on the Voter Portal for a replacement EPIC.",
+                "Alternatively, if an election is near, check your name on the roll.",
+                "If your name is on the list, you can still vote using Aadhaar, PAN, Passport, etc."
+            ]
+        },
+        {
+            id: "evm-help",
+            title: "I want to understand EVM & VVPAT",
+            icon: "fa-microchip",
+            steps: [
+                "EVMs (Electronic Voting Machines) are highly secure standalone machines.",
+                "Press the blue button next to your chosen candidate's symbol.",
+                "Look at the VVPAT machine (the glass window box next to the EVM).",
+                "A paper slip with your candidate's symbol will be visible for 7 seconds before dropping into the box.",
+                "This ensures your vote was recorded exactly as cast."
+            ]
+        }
+    ],
+    readinessQuestions: [
+        { id: "r1", text: "Are you 18 years of age or older?" },
+        { id: "r2", text: "Is your name registered on the official voter list?" },
+        { id: "r3", text: "Do you know the exact location of your polling booth?" },
+        { id: "r4", text: "Do you have your Voter ID or an approved alternate ID ready?" },
+        { id: "r5", text: "Do you know what items are prohibited inside the polling booth (like phones)?" }
     ],
     mapData: {
         "IN-UP": { name: "Uttar Pradesh", seats: 80, turnout: "59.21%", parties: "BJP, SP, BSP, INC", phase: "All 7 Phases" },

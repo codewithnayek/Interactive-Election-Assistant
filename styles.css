@@ -672,3 +672,186 @@ body {
         width: 100%;
     }
 }
+
+/* =========================================
+   Smart Voter Help Assistant Styles
+   ========================================= */
+
+/* Readiness Checker */
+.readiness-widget {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.readiness-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.readiness-question:last-child {
+    border-bottom: none;
+}
+
+.readiness-options {
+    display: flex;
+    gap: 1rem;
+}
+
+.readiness-options .btn {
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+.readiness-options .btn.active {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+    color: var(--text-primary);
+}
+
+.readiness-options .btn-no.active {
+    background: #ff4c4c;
+    border-color: #ff4c4c;
+}
+
+#readiness-result {
+    text-align: center;
+    padding: 1rem;
+}
+
+#readiness-score-text {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--accent-saffron);
+}
+
+.missing-steps {
+    text-align: left;
+    background: rgba(255, 76, 76, 0.1);
+    border-left: 4px solid #ff4c4c;
+    padding: 1.5rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.missing-steps h4 {
+    color: #ff4c4c;
+    margin-bottom: 1rem;
+}
+
+.missing-steps ul {
+    list-style: none;
+    padding: 0;
+}
+
+.missing-steps li {
+    margin-bottom: 0.5rem;
+}
+
+/* Help Grid */
+.help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.help-card {
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.help-card i {
+    font-size: 2.5rem;
+    color: var(--accent-saffron);
+    margin-bottom: 1rem;
+}
+
+.help-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-color: var(--accent-green);
+}
+
+.help-card:hover i {
+    color: var(--accent-green);
+}
+
+/* Dynamic Guide */
+.guide-step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.guide-step-item .step-num {
+    background: var(--accent-saffron);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Static Info Content */
+.info-content {
+    padding: 2rem;
+    text-align: left;
+}
+
+.info-content h3 {
+    color: var(--accent-saffron);
+    margin-bottom: 1rem;
+}
+
+.info-content ul, .info-content ol {
+    padding-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-content li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+/* Trust & Safety Footer */
+.trust-footer {
+    margin-top: 4rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.trust-footer i {
+    color: var(--accent-green);
+    margin-right: 8px;
+}
+
+.mt-2 {
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .readiness-question {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}

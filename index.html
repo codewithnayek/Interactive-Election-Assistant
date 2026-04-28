@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>India Votes - Election Assistant</title>
+    <title>India Votes - Smart Voter Help Assistant</title>
     <meta name="description" content="An interactive guide to understanding the Indian Election System.">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
@@ -22,11 +22,14 @@
             <i class="fa-solid fa-check-to-slot"></i> India Votes
         </div>
         <ul class="nav-links">
-            <li class="active" data-target="dashboard"><i class="fa-solid fa-timeline"></i> Process Timeline</li>
+            <li class="active" data-target="help-dashboard"><i class="fa-solid fa-handshake-angle"></i> Voter Help</li>
+            <li data-target="register"><i class="fa-solid fa-address-card"></i> Register to Vote</li>
+            <li data-target="guide"><i class="fa-solid fa-book-open-reader"></i> Voting Day Guide</li>
+            <li data-target="dashboard"><i class="fa-solid fa-timeline"></i> Election Timeline</li>
             <li data-target="map"><i class="fa-solid fa-map-location-dot"></i> Election Map</li>
-            <li data-target="flashcards"><i class="fa-solid fa-clone"></i> Flashcards</li>
+            <li data-target="flashcards"><i class="fa-solid fa-microchip"></i> EVM & VVPAT</li>
+            <li data-target="fakenews"><i class="fa-solid fa-shield-halved"></i> Fake News Check</li>
             <li data-target="quiz"><i class="fa-solid fa-clipboard-question"></i> Quiz</li>
-            <li data-target="guide"><i class="fa-solid fa-book-open-reader"></i> Voter Guide</li>
             <li data-target="chatbot"><i class="fa-solid fa-comments"></i> Election Chat</li>
         </ul>
     </nav>
@@ -34,13 +37,68 @@
     <main class="main-content">
         <header>
             <div class="header-title">
-                <h1>Interactive Election Assistant</h1>
-                <p>Learn about the largest democratic process in the world.</p>
+                <h1>Smart Voter Help Assistant</h1>
+                <p>A platform that helps Indian citizens understand and complete the voting process step by step.</p>
             </div>
         </header>
 
+        <!-- NEW VOTER HELP DASHBOARD -->
+        <section id="help-dashboard" class="page active">
+            <h2>Am I Ready to Vote?</h2>
+            <p class="subtitle">Take this quick check to see if you are fully prepared for election day.</p>
+            
+            <div class="readiness-widget glass-panel">
+                <div id="readiness-quiz">
+                    <!-- Readiness questions injected via JS -->
+                </div>
+                <div id="readiness-result" style="display: none;">
+                    <h3 id="readiness-score-text">You are 0% ready to vote.</h3>
+                    <div class="missing-steps" id="missing-steps-container">
+                        <h4>Missing Steps:</h4>
+                        <ul id="missing-steps-list"></ul>
+                    </div>
+                    <button class="btn btn-primary mt-2" id="btn-retake-readiness">Retake Check</button>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 3rem;">What do you need help with?</h2>
+            <p class="subtitle">Select a topic below for a personalized step-by-step guide.</p>
+            
+            <div class="help-grid" id="help-grid">
+                <!-- Help options injected via JS -->
+            </div>
+
+            <!-- Dynamic Guide Modal / Section -->
+            <div id="dynamic-guide-container" class="glass-panel" style="display: none; margin-top: 2rem;">
+                <h3 id="dynamic-guide-title">Guide Title</h3>
+                <div id="dynamic-guide-content" class="guide-steps-list"></div>
+                <button class="btn mt-2" id="btn-close-guide">Close Guide</button>
+            </div>
+        </section>
+
+        <!-- REGISTER TO VOTE -->
+        <section id="register" class="page">
+            <h2>Register to Vote</h2>
+            <p class="subtitle">Everything you need to know about getting on the electoral roll.</p>
+            <div class="glass-panel info-content">
+                <h3>Required Documents</h3>
+                <ul>
+                    <li><strong>Proof of Age:</strong> Birth certificate, Pan Card, Aadhaar Card, or Class 10 Marksheet.</li>
+                    <li><strong>Proof of Residence:</strong> Passport, Ration Card, Aadhaar Card, or utility bills (Water/Electricity).</li>
+                    <li><strong>Passport Size Photograph</strong></li>
+                </ul>
+                <h3 style="margin-top: 2rem;">How to Apply Online (Form 6)</h3>
+                <ol>
+                    <li>Visit the official Voter Service Portal (voters.eci.gov.in).</li>
+                    <li>Sign up or log in using your mobile number.</li>
+                    <li>Select "Fill Form 6" for new voter registration.</li>
+                    <li>Upload the required documents and submit. You will receive a reference number to track your application.</li>
+                </ol>
+            </div>
+        </section>
+
         <!-- DASHBOARD (TIMELINE) -->
-        <section id="dashboard" class="page active">
+        <section id="dashboard" class="page">
             <h2>The Election Timeline</h2>
             <p class="subtitle">Step-by-step process of how elections are conducted in India.</p>
             
@@ -88,10 +146,10 @@
             </div>
         </section>
 
-        <!-- FLASHCARDS -->
+        <!-- EVM & VVPAT (FLASHCARDS) -->
         <section id="flashcards" class="page">
-            <h2>Learn the Terminology</h2>
-            <p class="subtitle">Click the card to flip and learn key election terms.</p>
+            <h2>Understand EVM & VVPAT</h2>
+            <p class="subtitle">Click the card to flip and learn key election terms and tech.</p>
             
             <div class="flashcard-container">
                 <div class="flashcard" id="flashcard">
@@ -149,11 +207,31 @@
 
         <!-- VOTER GUIDE -->
         <section id="guide" class="page">
-            <h2>How to Vote</h2>
-            <p class="subtitle">Your step-by-step guide to exercising your franchise.</p>
+            <h2>Voting Day Guide</h2>
+            <p class="subtitle">Your checklist and guide for a smooth voting day experience.</p>
             
             <div class="guide-grid" id="guide-grid">
                 <!-- Guide steps injected via JS -->
+            </div>
+        </section>
+
+        <!-- FAKE NEWS CHECK -->
+        <section id="fakenews" class="page">
+            <h2>Fake News Check</h2>
+            <p class="subtitle">How to verify election-related claims and avoid misinformation.</p>
+            <div class="glass-panel info-content">
+                <h3>Common Types of Election Misinformation</h3>
+                <ul>
+                    <li><strong>Fake Poll Timings:</strong> Messages claiming polling dates or times have changed. Always verify with ECI.</li>
+                    <li><strong>Bogus Voter Deletions:</strong> Rumors that entire communities have been deleted from rolls. Check your status online.</li>
+                    <li><strong>Altered Videos/Deepfakes:</strong> Manipulated videos of politicians saying things they never did. Check trusted news sources.</li>
+                </ul>
+                <h3 style="margin-top: 2rem;">How to Verify Information</h3>
+                <ol>
+                    <li><strong>Check the Source:</strong> Is the information from an official ECI handle or website (eci.gov.in)?</li>
+                    <li><strong>Look for Fact-Checkers:</strong> Use trusted fact-checking platforms to verify viral claims.</li>
+                    <li><strong>Don't Forward Blindly:</strong> If a message evokes strong emotions or asks you to forward it urgently, it is likely fake. Stop the chain.</li>
+                </ol>
             </div>
         </section>
 
@@ -175,6 +253,11 @@
                 </div>
             </div>
         </section>
+
+        <!-- TRUST & SAFETY FOOTER -->
+        <footer class="trust-footer">
+            <p><i class="fa-solid fa-shield-halved"></i> <strong>Trust & Safety:</strong> This app is for voter education and guidance only. It does not promote any political party or candidate. For official updates and binding information, always refer to the official Election Commission of India website (eci.gov.in).</p>
+        </footer>
     </main>
 
     <script src="data.js"></script>

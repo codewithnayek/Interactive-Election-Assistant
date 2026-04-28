@@ -41,6 +41,129 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
+    // Voter Help Dashboard Logic
+    // ==========================================
+    const readinessQuizContainer = document.getElementById('readiness-quiz');
+    const readinessResultContainer = document.getElementById('readiness-result');
+    const missingStepsList = document.getElementById('missing-steps-list');
+    const btnRetakeReadiness = document.getElementById('btn-retake-readiness');
+    const readinessQuestions = electionData.readinessQuestions;
+    let readinessAnswers = {};
+
+    function renderReadinessQuiz() {
+        readinessQuizContainer.innerHTML = '';
+        readinessResultContainer.style.display = 'none';
+        readinessQuizContainer.style.display = 'block';
+        readinessAnswers = {};
+
+        readinessQuestions.forEach((q, index) => {
+            const qDiv = document.createElement('div');
+            qDiv.className = 'readiness-question';
+            qDiv.innerHTML = `
+                <p><strong>${index + 1}.</strong> ${q.text}</p>
+                <div class="readiness-options">
+                    <button class="btn btn-yes" data-id="${q.id}" data-val="yes">Yes</button>
+                    <button class="btn btn-no" data-id="${q.id}" data-val="no">No</button>
+                </div>
+            `;
+            readinessQuizContainer.appendChild(qDiv);
+        });
+
+        // Add event listeners to buttons
+        document.querySelectorAll('.readiness-options .btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const id = e.target.getAttribute('data-id');
+                const val = e.target.getAttribute('data-val');
+                
+                // Styling
+                const parent = e.target.parentElement;
+                parent.querySelectorAll('.btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+
+                readinessAnswers[id] = val;
+
+                // Check if all answered
+                if (Object.keys(readinessAnswers).length === readinessQuestions.length) {
+                    setTimeout(showReadinessResult, 500);
+                }
+            });
+        });
+    }
+
+    function showReadinessResult() {
+        readinessQuizContainer.style.display = 'none';
+        readinessResultContainer.style.display = 'block';
+        missingStepsList.innerHTML = '';
+
+        let score = 0;
+        let missing = [];
+
+        readinessQuestions.forEach(q => {
+            if (readinessAnswers[q.id] === 'yes') {
+                score += 20; // 5 questions * 20 = 100%
+            } else {
+                missing.push(q.text);
+            }
+        });
+
+        document.getElementById('readiness-score-text').textContent = `You are ${score}% ready to vote.`;
+        
+        const missingContainer = document.getElementById('missing-steps-container');
+        if (missing.length > 0) {
+            missingContainer.style.display = 'block';
+            missing.forEach(m => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fa-solid fa-xmark" style="color: #ff4c4c;"></i> Need to resolve: ${m.replace('?', '')}`;
+                missingStepsList.appendChild(li);
+            });
+        } else {
+            missingContainer.style.display = 'none';
+            document.getElementById('readiness-score-text').innerHTML += "<br><span style='color: var(--accent-green);'>You are fully prepared for Election Day!</span>";
+        }
+    }
+
+    if(btnRetakeReadiness) {
+        btnRetakeReadiness.addEventListener('click', renderReadinessQuiz);
+    }
+    renderReadinessQuiz();
+
+    // Render Help Guides
+    const helpGrid = document.getElementById('help-grid');
+    const dynamicGuideContainer = document.getElementById('dynamic-guide-container');
+    const dynamicGuideTitle = document.getElementById('dynamic-guide-title');
+    const dynamicGuideContent = document.getElementById('dynamic-guide-content');
+    const btnCloseGuide = document.getElementById('btn-close-guide');
+
+    electionData.voterHelpGuides.forEach(guide => {
+        const card = document.createElement('div');
+        card.className = 'help-card glass-panel';
+        card.innerHTML = `<i class="fa-solid ${guide.icon}"></i> <h3>${guide.title}</h3>`;
+        
+        card.addEventListener('click', () => {
+            dynamicGuideTitle.innerHTML = `<i class="fa-solid ${guide.icon}"></i> ${guide.title}`;
+            dynamicGuideContent.innerHTML = '';
+            guide.steps.forEach((step, index) => {
+                const stepDiv = document.createElement('div');
+                stepDiv.className = 'guide-step-item';
+                stepDiv.innerHTML = `<span class="step-num">${index + 1}</span> <p>${step}</p>`;
+                dynamicGuideContent.appendChild(stepDiv);
+            });
+            dynamicGuideContainer.style.display = 'block';
+            
+            // Scroll to guide
+            dynamicGuideContainer.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        helpGrid.appendChild(card);
+    });
+
+    if(btnCloseGuide) {
+        btnCloseGuide.addEventListener('click', () => {
+            dynamicGuideContainer.style.display = 'none';
+        });
+    }
+
+    // ==========================================
     // Flashcards Logic
     // ==========================================
     const flashcardElement = document.getElementById('flashcard');
