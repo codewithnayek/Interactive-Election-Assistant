@@ -76,9 +76,11 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(90deg, var(--accent-saffron), var(--text-primary), var(--accent-green));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-primary);
+}
+
+.logo i {
+    color: var(--accent-saffron);
 }
 
 .nav-links {
@@ -144,9 +146,7 @@ body {
 .page h2 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
-    background: linear-gradient(90deg, var(--accent-saffron), var(--accent-green));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--accent-saffron);
 }
 
 .subtitle {
