@@ -1,10 +1,10 @@
-# India Votes - Smart Voter Help Assistant
+# VoteReady India - Smart Voter Assistance Platform
 
 **Problem Statement:**
 Many citizens, especially first-time voters, face confusion about voter registration, required documents, polling day rules, voter rights, and reliable election information. This lack of awareness can reduce participation and increase dependence on misinformation.
 
 **Solution:**
-India Votes is an interactive voter assistance platform that provides step-by-step guidance, an AI-powered election help chat, voter checklists, election education, fake news awareness, and accessible information to help citizens participate confidently in the democratic process.
+VoteReady India is an interactive voter assistance platform that provides step-by-step guidance, an AI-powered election help chat, voter checklists, election education, fake news awareness, and accessible information to help citizens participate confidently in the democratic process.
 
 ## Features
 
