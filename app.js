@@ -239,6 +239,88 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ==========================================
+    // Interactive Map Logic
+    // ==========================================
+    if (typeof google !== 'undefined') {
+        google.charts.load('current', {
+            'packages': ['geochart']
+        });
+        google.charts.setOnLoadCallback(drawMap);
+    }
+
+    function drawMap() {
+        const data = new google.visualization.DataTable();
+        data.addColumn('string', 'State');
+        data.addColumn('number', 'Value');
+        
+        const mapData = electionData.mapData;
+        const rows = [];
+        
+        for (const [code, info] of Object.entries(mapData)) {
+            // Value 1 makes it colored
+            rows.push([code, 1]);
+        }
+        
+        data.addRows(rows);
+
+        const options = {
+            region: 'IN', // India
+            resolution: 'provinces',
+            backgroundColor: 'transparent',
+            datalessRegionColor: 'rgba(255, 255, 255, 0.05)',
+            defaultColor: '#138808', // Green default
+            colorAxis: {colors: ['#FF9933', '#FF9933']}, // All saffron
+            legend: 'none',
+            tooltip: { trigger: 'hover' },
+            keepAspectRatio: true
+        };
+
+        const chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+        
+        // Handle clicks
+        google.visualization.events.addListener(chart, 'select', () => {
+            const selection = chart.getSelection();
+            if (selection.length > 0) {
+                const row = selection[0].row;
+                const stateCode = data.getValue(row, 0);
+                updateStateInfoPanel(stateCode);
+            }
+        });
+
+        // Add a slight delay to ensure container is fully visible if it's the active page
+        setTimeout(() => {
+            chart.draw(data, options);
+        }, 100);
+        
+        // Redraw map on window resize
+        window.addEventListener('resize', () => {
+            chart.draw(data, options);
+        });
+
+        // Also redraw when the map tab is clicked to ensure correct dimensions
+        const mapLink = document.querySelector('[data-target="map"]');
+        if(mapLink) {
+            mapLink.addEventListener('click', () => {
+                setTimeout(() => { chart.draw(data, options); }, 50);
+            });
+        }
+    }
+
+    function updateStateInfoPanel(stateCode) {
+        const info = electionData.mapData[stateCode];
+        if (!info) return;
+
+        document.querySelector('.state-placeholder').style.display = 'none';
+        document.getElementById('state-details').style.display = 'block';
+
+        document.getElementById('info-state-name').textContent = info.name;
+        document.getElementById('info-seats').textContent = info.seats;
+        document.getElementById('info-turnout').textContent = info.turnout;
+        document.getElementById('info-parties').textContent = info.parties;
+        document.getElementById('info-phase').textContent = info.phase;
+    }
+
     renderChatOptions();
 
 });

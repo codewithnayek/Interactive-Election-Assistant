@@ -567,3 +567,108 @@ body {
     background: rgba(19, 136, 8, 0.4);
     box-shadow: 0 0 10px rgba(19, 136, 8, 0.3);
 }
+
+/* Interactive Map */
+.map-layout {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    align-items: flex-start;
+}
+
+.map-container {
+    flex: 2;
+    min-height: 500px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-container path {
+    cursor: pointer;
+    transition: fill 0.3s ease;
+}
+
+.map-container path:hover {
+    fill: #138808 !important; /* Green on hover */
+}
+
+.state-info-panel {
+    flex: 1;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.state-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+    text-align: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+}
+
+.state-placeholder i {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.state-details h3 {
+    font-size: 2rem;
+    color: var(--accent-saffron);
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.info-card h4 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-card h4 i {
+    color: var(--accent-green);
+}
+
+.info-card p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Map Tooltip Override */
+.google-visualization-tooltip {
+    background-color: var(--bg-dark) !important;
+    border: 1px solid var(--accent-saffron) !important;
+    border-radius: 8px !important;
+    box-shadow: var(--glass-shadow) !important;
+    color: var(--text-primary) !important;
+    padding: 10px !important;
+    font-family: 'Outfit', sans-serif !important;
+}
+
+@media (max-width: 992px) {
+    .map-layout {
+        flex-direction: column;
+    }
+    .map-container {
+        width: 100%;
+    }
+}

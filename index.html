@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Charts -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
     <!-- Abstract Background Elements -->
@@ -21,6 +23,7 @@
         </div>
         <ul class="nav-links">
             <li class="active" data-target="dashboard"><i class="fa-solid fa-timeline"></i> Process Timeline</li>
+            <li data-target="map"><i class="fa-solid fa-map-location-dot"></i> Election Map</li>
             <li data-target="flashcards"><i class="fa-solid fa-clone"></i> Flashcards</li>
             <li data-target="quiz"><i class="fa-solid fa-clipboard-question"></i> Quiz</li>
             <li data-target="guide"><i class="fa-solid fa-book-open-reader"></i> Voter Guide</li>
@@ -43,6 +46,45 @@
             
             <div class="timeline-container" id="timeline-container">
                 <!-- Timeline injected via JS -->
+            </div>
+        </section>
+
+        <!-- ELECTION MAP -->
+        <section id="map" class="page">
+            <h2>Interactive Election Map</h2>
+            <p class="subtitle">Click on a state or Union Territory to view its electoral data.</p>
+            
+            <div class="map-layout">
+                <div class="map-container glass-panel" id="regions_div">
+                    <!-- Google Chart injected here -->
+                </div>
+                <div class="state-info-panel glass-panel" id="state-info-panel">
+                    <div class="state-placeholder">
+                        <i class="fa-solid fa-hand-pointer"></i>
+                        <p>Select a state on the map to see details.</p>
+                    </div>
+                    <div class="state-details" id="state-details" style="display: none;">
+                        <h3 id="info-state-name">State Name</h3>
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <h4><i class="fa-solid fa-users"></i> Lok Sabha Seats</h4>
+                                <p id="info-seats">--</p>
+                            </div>
+                            <div class="info-card">
+                                <h4><i class="fa-solid fa-check-to-slot"></i> Turnout</h4>
+                                <p id="info-turnout">--</p>
+                            </div>
+                            <div class="info-card">
+                                <h4><i class="fa-solid fa-flag"></i> Major Parties</h4>
+                                <p id="info-parties">--</p>
+                            </div>
+                            <div class="info-card">
+                                <h4><i class="fa-solid fa-calendar-days"></i> Voting Phase</h4>
+                                <p id="info-phase">--</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
